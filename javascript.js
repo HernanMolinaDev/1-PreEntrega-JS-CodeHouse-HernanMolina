@@ -23,12 +23,12 @@ function desplegarApp(){
                 if(seguir=="SI"){
                 }
                 else{
-                    alert("el balance total es de" + total + "con los siguientes items:")
+                    alert(`el balance total es de ${total} con los siguientes items: (ver en body)`)
                     for (let value of listaTotal) {
 
                         
                         let texto=document.createElement('p');
-                        texto.innerText="tipo: " + value.tipo + " monto: $"+value.monto
+                        texto.innerText=`tipo: ${value.tipo} monto: $${value.monto}`
                         let contenedor=document.getElementById("container")
                         contenedor.appendChild(texto);
                         
@@ -42,17 +42,17 @@ function desplegarApp(){
                 let ingreso = { tipo: "Ingreso", monto:monto};
                 listaTotal.push(ingreso);
                 total=total+monto;
-                alert("el balance actual es de $" + total)
-                let seguir=prompt("si desea continuar el balance coloque SI para confirmar")
+                alert(`el balance actual es de $${total}`)
+                let seguir=prompt(`si desea continuar el balance coloque SI para confirmar`)
                 if(seguir=="SI"){
                 }
                 else{
-                    alert("el balance total es de" + total + "con los siguientes items:")
+                    alert(`el balance total es de ${total} con los siguientes items:(ver en body) `)
                     for (let value of listaTotal) {
 
                         
                         let texto=document.createElement('p');
-                        texto.innerText="tipo: " + value.tipo + " monto: $"+value.monto
+                        texto.innerText=`tipo: ${value.tipo} monto: $${value.monto}`
                         let contenedor=document.getElementById("container")
                         contenedor.appendChild(texto);
                         

@@ -1,39 +1,73 @@
-
+let listaTotal=[];
 let monto;
-let meses;
+let detalle;
+let total;
 let continuar=true;
-function calculadora(){
-    while(continuar===true){
+alert("Hola! , esto es un pequeño simulador de finanzas personales")
+desplegarApp();
 
-    monto=prompt("Vamos a simular tu prestamo, a continuacion indica cuanto deseas solicitar por favor;");
-    meses=prompt("coloque la cantidad de cuotas que desea abonar");
-        if (monto<50000 && meses<6){
-        Cuotas= monto*1.8/meses;
-        alert("tu prestamo por  "+monto+" a " +meses+" meses es de "+Cuotas+" cada mes para finarlizar el pago");
-        }
-        else if(monto<50000 && meses>=6 || monto>50000 && meses<6){
-            Cuotas= monto*2.2/meses;
-            alert("tu prestamo por  "+monto+" a " +meses+" meses es de "+Cuotas+" cada mes para finarlizar el pago");
+function desplegarApp(){
+
+    total=parseFloat(prompt("Agregue el dinero total actual por favor"))
+    if(total>=0){
+        while(continuar===true){ 
+            detalle=prompt("Coloque el detalle del gasto o ingreso.\n Coloque '1' si es un gasto \n coloque '2' si es un ingreso")
+            monto=parseFloat(prompt("Ingrese por favor el monto a agregar"))
+            if(detalle=='1'){
+                alert("procesando gasto")
+                let gasto = { tipo: "Gasto", monto:monto};
+                listaTotal.push(gasto);
+                total=total-monto;
+                alert("el balance actual es de $" + total)
+                let seguir=prompt("si desea continuar el balance coloque SI para confirmar")
+                if(seguir=="SI"){
+                }
+                else{
+                    alert("el balance total es de" + total + "con los siguientes items:")
+                    for (let value of listaTotal) {
+
+                        
+                        let texto=document.createElement('p');
+                        texto.innerText="tipo: " + value.tipo + " monto: $"+value.monto
+                        let contenedor=document.getElementById("container")
+                        contenedor.appendChild(texto);
+                        
+                    }
+                    continuar=false
+                    
+                }
             }
-        else if(monto>50000 && meses<6){
-            Cuotas= monto*3.5/meses;
-            alert("tu prestamo por  "+monto+" a " +meses+" meses es de "+Cuotas+" cada mes para finarlizar el pago");
+            else if(detalle=='2'){
+                alert("procesando Ingreso")
+                let ingreso = { tipo: "Ingreso", monto:monto};
+                listaTotal.push(ingreso);
+                total=total+monto;
+                alert("el balance actual es de $" + total)
+                let seguir=prompt("si desea continuar el balance coloque SI para confirmar")
+                if(seguir=="SI"){
+                }
+                else{
+                    alert("el balance total es de" + total + "con los siguientes items:")
+                    for (let value of listaTotal) {
+
+                        
+                        let texto=document.createElement('p');
+                        texto.innerText="tipo: " + value.tipo + " monto: $"+value.monto
+                        let contenedor=document.getElementById("container")
+                        contenedor.appendChild(texto);
+                        
+                    }
+                    continuar=false
+                    
+                }
             }
             else{
-                alert("ingrese por favor datos validos (numeros positivos,caracteres validos ,etc)");
-            };
-        respuesta=prompt("Desea realizar otra simulacion? coloque SI o NO↓");
-        if(respuesta==="SI"){
-            alert("continuamos con las simulaciones!");
-        } else if(respuesta==="NO"){
-            alert("Gracias por utilizar nuestro servicio!");
-            continuar=false;
-            break
-        }
-        else{
-            alert("Por favor coloque una opcion valida")
-        }
+                alert("por favor coloque una opcion valida")
+            }
+        }}
+    else{
+        alert("Coloque un numero mayor o igual a cero por favor")
     }
 }
 
-calculadora();
+

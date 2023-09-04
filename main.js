@@ -56,7 +56,7 @@ const generarText=()=>{
     }
     for (const ingreso of listaDeIngresos) {
         let detIngresos=document.createElement('p')
-        detIngresos.innerText=`Gasto - ${ingreso.detalle} - $ ${ingreso.monto}`
+        detIngresos.innerText=`Ingreso - ${ingreso.detalle} - $ ${ingreso.monto}`
         contenedor.appendChild(detIngresos)
     }
 

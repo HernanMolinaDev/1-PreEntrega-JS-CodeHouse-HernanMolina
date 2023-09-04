@@ -51,12 +51,12 @@ const generarText=()=>{
     contenedor.appendChild(bal)
     for (const gasto of listaDeGastos) {
         let detGastos=document.createElement('p')
-        detGastos.innerText=`Gasto - ${gasto.detalle} - ${gasto.monto}`
+        detGastos.innerText=`Gasto - ${gasto.detalle} - $ ${gasto.monto}`
         contenedor.appendChild(detGastos)
     }
     for (const ingreso of listaDeIngresos) {
         let detIngresos=document.createElement('p')
-        detIngresos.innerText=`Gasto - ${ingreso.detalle} - ${ingreso.monto}`
+        detIngresos.innerText=`Gasto - ${ingreso.detalle} - $ ${ingreso.monto}`
         contenedor.appendChild(detIngresos)
     }
 

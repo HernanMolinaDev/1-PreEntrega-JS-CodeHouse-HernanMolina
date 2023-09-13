@@ -1,5 +1,5 @@
-let listaDeGastos=[];
-let listaDeIngresos=[];
+let listaDeGastos=JSON.parse(localStorage.getItem ("gastos")) || [];
+let listaDeIngresos=JSON.parse(localStorage.getItem ("ingresos")) || [];
 let balance=0;
 class Ingresos{
     constructor(tipo,detalle,monto){
@@ -47,6 +47,7 @@ const tomarDatos=()=>{
 const generarText=()=>{
     let bal=document.createElement('p')
     let contenedor=document.getElementById('container')
+    contenedor.innerHTML=''
     bal.innerText=`su balance total es de $ ${balance}`
     contenedor.appendChild(bal)
     for (const gasto of listaDeGastos) {
@@ -64,11 +65,22 @@ const generarText=()=>{
 const mostrarDatos=()=>{
     event.preventDefault();
     generarText();
+    generarLocalStorage();
 
+}
+const generarLocalStorage=()=>{ 
+localStorage.setItem("ingresos",JSON.stringify(listaDeIngresos))
+localStorage.setItem("gastos",JSON.stringify(listaDeGastos))
+}
+
+const deleteLocal=()=>{
+    localStorage.removeItem("gastos");
+    localStorage.removeItem("ingresos");
 }
 
 let btnSendForm=document.getElementById('btn-send-form');
 let btnListForm=document.getElementById('btn-list-form');
-
+let btnDltLocal=document.getElementById('btn-dlt-local')
 btnSendForm.addEventListener('click',tomarDatos);
 btnListForm.addEventListener('click',mostrarDatos);
+btnDltLocal.addEventListener('click',deleteLocal);

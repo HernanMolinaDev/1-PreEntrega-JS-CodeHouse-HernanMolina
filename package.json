@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "sass": "^1.66.1"
+  },
+  "name": "2-preentrega-js-codehouse-hernanmolina",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HernanMolinaDev/2-PreEntrega-JS-CodeHouse-HernanMolina.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HernanMolinaDev/2-PreEntrega-JS-CodeHouse-HernanMolina/issues"
+  },
+  "homepage": "https://github.com/HernanMolinaDev/2-PreEntrega-JS-CodeHouse-HernanMolina#readme",
+  "description": ""
+}

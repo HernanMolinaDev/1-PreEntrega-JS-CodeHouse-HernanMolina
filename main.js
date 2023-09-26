@@ -18,30 +18,62 @@ class Gastos{
 const crearGasto=(tipo)=>{
     let detalle=document.getElementById("inp-detalle").value;
     let monto=parseFloat (document.getElementById("inp-monto").value);
+    if (!isNaN(monto)){
     let gasto= new Gastos(tipo,detalle,monto);
     balance=balance-gasto.monto;
     listaDeGastos.push(gasto);
-    alert("se agrego gasto correctamente");
+    Swal.fire({
+        icon: 'success',
+        title: 'Excelente!',
+        text: 'Se agrego GASTO correctamente!',
+        });
+    }
+    else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Cuidado!',
+            text: 'Debes colocar una cifra aceptable en "monto"',
+            })
+
+    }
 }
 const crearIngreso=(tipo)=>{
         let detalle=document.getElementById("inp-detalle").value;
         let monto=parseFloat(document.getElementById("inp-monto").value);
+        if (!isNaN(monto)){
         let ingreso= new Ingresos(tipo,detalle,monto);
         balance=balance+ingreso.monto;
         listaDeIngresos.push(ingreso);
-        alert("se agrego ingreso correctamente");
+        Swal.fire({
+            icon: 'success',
+            title: 'Excelente!',
+            text: 'Se agrego INGRESO correctamente!',
+            });
+        }
+        else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Cuidado!',
+                text: 'Debes colocar una cifra aceptable en "monto"',
+                })
+    
+        }
     }
 const tomarDatos=()=>{
     event.preventDefault();
         let tipo=document.getElementById("inp-tipo").value;
-            if(tipo==='gasto'){
+            if(tipo=='gasto'){
                 crearGasto(tipo);
             }
-            else if(tipo==='ingreso'){
+            else if(tipo=='ingreso'){
                 crearIngreso(tipo);
             }
             else{
-                alert("coloque una opcion valida")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Cuidado!',
+                    text: 'alguna de las opciones no es correcta',
+                    })
             }
 }
 const generarText=()=>{
@@ -60,7 +92,7 @@ const generarText=()=>{
         detIngresos.innerText=`Ingreso - ${ingreso.detalle} - $ ${ingreso.monto}`
         contenedor.appendChild(detIngresos)
     }
-
+    
 }
 const mostrarDatos=()=>{
     event.preventDefault();
@@ -83,4 +115,4 @@ let btnListForm=document.getElementById('btn-list-form');
 let btnDltLocal=document.getElementById('btn-dlt-local')
 btnSendForm.addEventListener('click',tomarDatos);
 btnListForm.addEventListener('click',mostrarDatos);
-btnDltLocal.addEventListener('click',deleteLocal);
+btnDltLocal.addEventListener('click',deleteLocal,);

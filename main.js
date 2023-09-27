@@ -109,10 +109,28 @@ const deleteLocal=()=>{
     localStorage.removeItem("gastos");
     localStorage.removeItem("ingresos");
 }
-
+const dolarCotizacion=()=>{
+    const options = {method: 'GET', headers: {Accept: 'application/json'}};
+    const response=fetch("https://dolarapi.com/v1/dolares/blue", options)
+    .then(response=>{
+        if(!response.ok){
+            console.log("no cargo api")
+        }
+        return response.json()})
+        .then(data=>{
+            const contenedorDolar=document.getElementById('container-dolar')
+            contenedorDolar.innerHTML=`
+            <h4>Dolar Blue</h4>;
+            <p>venta: ${data.venta}</p>
+            <p>Compra: ${data.compra}</p>
+            <p>Fecha: ${data.fechaActualizacion}</p>
+            `
+        });
+    }
 let btnSendForm=document.getElementById('btn-send-form');
 let btnListForm=document.getElementById('btn-list-form');
-let btnDltLocal=document.getElementById('btn-dlt-local')
+let btnDltLocal=document.getElementById('btn-dlt-local');
 btnSendForm.addEventListener('click',tomarDatos);
 btnListForm.addEventListener('click',mostrarDatos);
 btnDltLocal.addEventListener('click',deleteLocal,);
+window.addEventListener("load",dolarCotizacion);

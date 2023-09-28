@@ -120,7 +120,7 @@ const dolarCotizacion=()=>{
         .then(data=>{
             const contenedorDolar=document.getElementById('container-dolar')
             contenedorDolar.innerHTML=`
-            <h4>Dolar Blue</h4>;
+            <h4>Cotizacion DOLAR BLUE</h4>
             <p>venta: ${data.venta}</p>
             <p>Compra: ${data.compra}</p>
             <p>Fecha: ${data.fechaActualizacion}</p>
